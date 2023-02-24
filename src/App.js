@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, NavLink } from 'react-router-dom';
 import './App.css';
+import DogFact from './DogFact';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Hello World
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <NavLink to="/" exact activeClassName="active-tab">
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/dog-fact" activeClassName="active-tab">
+                Dog Fact
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/dog-fact" element={<DogFact />} />
+          <Route path="/" element={<h1>Welcome to my personal webpage, built with react and mongodb!</h1>} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
